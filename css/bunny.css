@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+#world {
+  position: absolute;
+}
+.noscroll {
+  position: fixed;
+  overflow: hidden;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #ffffff;
+  background: #43917f85;
+}
+
+#instructions {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#instructions p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+/* 
+    #spinner {
+        display: none;
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        top: 20%;
+        left: 50%;
+        margin-top: -20px;
+        margin-left: -20px;
+        z-index: 101;
+        background-color: #3498db;
+
+        -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+        animation: sk-rotateplane 1.2s infinite ease-in-out;
+    }
+
+    @-webkit-keyframes sk-rotateplane {
+        0% { -webkit-transform: perspective(120px) }
+        50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+        100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+    }
+
+    @keyframes sk-rotateplane {
+        0% {
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+        } 50% {
+            transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+            -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+        } 100% {
+            transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+            -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        }
+    } */
+
+.lds-grid {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+  z-index: 101;
+}
+
+.lds-grid div {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation: lds-grid 1.2s linear infinite;
+}
+
+.lds-grid div:nth-child(1) {
+  top: 6px;
+  left: 6px;
+  animation-delay: 0s;
+}
+
+.lds-grid div:nth-child(2) {
+  top: 6px;
+  left: 26px;
+  animation-delay: -0.4s;
+}
+
+.lds-grid div:nth-child(3) {
+  top: 6px;
+  left: 45px;
+  animation-delay: -0.8s;
+}
+
+.lds-grid div:nth-child(4) {
+  top: 26px;
+  left: 6px;
+  animation-delay: -0.4s;
+}
+
+.lds-grid div:nth-child(5) {
+  top: 26px;
+  left: 26px;
+  animation-delay: -0.8s;
+}
+
+.lds-grid div:nth-child(6) {
+  top: 26px;
+  left: 45px;
+  animation-delay: -1.2s;
+}
+
+.lds-grid div:nth-child(7) {
+  top: 45px;
+  left: 6px;
+  animation-delay: -0.8s;
+}
+
+.lds-grid div:nth-child(8) {
+  top: 45px;
+  left: 26px;
+  animation-delay: -1.2s;
+}
+
+.lds-grid div:nth-child(9) {
+  top: 45px;
+  left: 45px;
+  animation-delay: -1.6s;
+}
+
+@keyframes lds-grid {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.shooter, .texture-control {
+  position: absolute;
+  z-index: 50;
+  left: 10px;
+}
+.shooter {
+  top: 100px;
+}
+.texture-control {
+  top: 150px;
+}
+.btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid red;
+  border-color: #7abf8e;
+  border-radius: 0.6em;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-weight: 400;
+  line-height: 1;
+  padding: 1em 1em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 0 40px 40px #7abf8e inset, 0 0 0 0 #7abf8e;
+  transition: all 150ms ease-in-out;
+}
+
+.btn:hover {
+  box-shadow: 0 0 10px 0 #7abf8e inset, 0 0 10px 4px #7abf8e;
+  color: #000;
+}
+  
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 60; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  text-align: center;
+  font-style: italic;
+  font-size: 1.8em;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+#btn-reset {
+  margin: 0 auto;
+}
